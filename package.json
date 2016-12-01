@@ -1,0 +1,35 @@
+{
+  "name": "webscraper-mongdb",
+  "version": "1.0.0",
+  "description": "full stack web scraper that searchs for new stories and updates a MongoDB database with the information, users can leave comments or notes",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/clsavino/webscraper-mongdb.git"
+  },
+  "keywords": [
+    "Node.js",
+    "Express.js",
+    "MongoDB",
+    "Mongoose",
+    "Cheerio"
+  ],
+  "author": "Christi Savino",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/clsavino/webscraper-mongdb/issues"
+  },
+  "homepage": "https://github.com/clsavino/webscraper-mongdb#readme",
+  "dependencies": {
+    "cheerio": "^0.22.0",
+    "express": "^4.14.0",
+    "express-handlebars": "^3.0.0",
+    "handlebars-helpers": "^0.7.5",
+    "method-override": "^2.3.7",
+    "mongoose": "^4.7.1",
+    "request": "^2.79.0"
+  }
+}
