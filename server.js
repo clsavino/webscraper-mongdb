@@ -6,7 +6,7 @@ var bodyParser = require("body-parser");
 var methodOverride = require('method-override');
 var logger = require("morgan");
 var exphbs = require('express-handlebars');
-var path = require('path');
+
 var router = require('./controllers/controller.js');
 
 // Initialize Express

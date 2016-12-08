@@ -2,20 +2,33 @@
 <html lang="en-us">
   <head>
     <meta charset="UTF-8">
-    <title>Web Articles \& Notes</title>
+    <title>WebDev Articles</title>
     <!-- Journal bootstrap theme -->
     <link href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/journal/bootstrap.min.css" rel="stylesheet" integrity="sha384-1L94saFXWAvEw88RkpRz8r28eQMvt7kG9ux3DdCqya/P3CfLNtgqzMnyaUa49Pl2" crossorigin="anonymous">
 
-    <link rel="stylesheet" type="text/css" href="./public/assets/css/style.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
 
   </head>
   <body>
-    <div id="wrapper">
+    <header class="col-md-12 text-center well pageHeader">
       <h1>Web Development News</h1>
       <h2><i>and Notes</i></h2>
-      <div id="articles"></div>
-      <div id="notes"></div>
+    </header>
+
+    <div class="container mainContainer">
+      <div class="row box">
+        <div class="col-md-6" id="redditNews">
+          <h3 class="text-center row3Text">Web Development Articles</h3>
+          <div id="articles"></div>
+        </div>
+        <div class="col-md-6 goodNewsPics text-center" id="picsDiv">
+          <h3 class="text-center row3Text">Notes</h3>
+          <div id="notes"></div>
+        </div>
+      </div>
     </div>
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-2.2.1.min.js"></script>
     <script src="app.js"></script>
   </body>

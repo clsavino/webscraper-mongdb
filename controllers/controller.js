@@ -31,7 +31,7 @@ db.once("open", function() {
 });
 
 /*Simple index route
-app.get("/", function(req, res) {
+router.get("/", function(req, res) {
   res.send(index.html);
 });
 */
