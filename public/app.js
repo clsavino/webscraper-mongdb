@@ -6,7 +6,7 @@ $.getJSON("/articles", function(data) {
     //$("#articles").append("<p data-id='" + data[i]._id + "'>" + data[i].title + "<br />" + data[i].link + "</p>");
     //$("#articles").append("<p data-id='" + data[i]._id + "'>" + data[i].title + "</p>");
     $("#articles").append("<p data-id='" + data[i]._id + "'>" + data[i].title + "</p>");
-    $("#articles").append("<a data-id='" + data[i]._id + "' href='"   + data[i].link + " target='about_blank'>" + data[i].link + "</a>");
+    $("#articles").append("<a data-id='" + data[i]._id + "' href='"   + data[i].link + "' target='about_blank'>" + data[i].link + "</a>");
   }
 });
 

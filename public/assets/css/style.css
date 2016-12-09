@@ -34,19 +34,32 @@ body {
   color: white;
 }
 
-.row3Text {
+.rowText {
   color: #2A9D8F;
   font-size: 2em;
 }
 
+.smallText {
+  color: #2A9D8F;
+  margin: 0 auto;
+  width: 50%;
+}
 
 #articles p{
   margin-bottom: 0;
   margin-top: 20px;
 }
 
+#articles p:hover {
+  cursor: default;
+}
+
 #articles>a {
   color: #2C82C9;
+}
+
+#articles>a:hover {
+  cursor: pointer;
 }
 
 #notesDiv{
