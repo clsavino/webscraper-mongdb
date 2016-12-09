@@ -1,12 +1,12 @@
 /* Set up the server file to require npm packages, express middleware, body-parser, methodOverride, espress-handlebars and the handlebars engine
 */
 // Dependencies
-var express = require("express");
-var bodyParser = require("body-parser");
+// All the functions that will do the routing for the app, and the logic of each route.
+var express = require('express');
+var bodyParser = require('body-parser');
 var methodOverride = require('method-override');
-var logger = require("morgan");
+var path = require('path');
 var exphbs = require('express-handlebars');
-
 var router = require('./controllers/controller.js');
 
 // Initialize Express
@@ -20,10 +20,8 @@ app.engine('handlebars', exphbs({defaultLayout: 'main', extname: '.handlebars'})
 app.set('view engine', 'handlebars');
 
 // Use morgan and body parser with the app
+var logger = require("morgan");
 app.use(logger("dev"));
-app.use(bodyParser.urlencoded({
-  extended: false
-}));
 
 // Serve static content for the app from the "public" directory in the application directory.
 //app.use(express.static(__dirname + '/public'));
@@ -37,7 +35,6 @@ app.use(methodOverride('_method'));
 
 //
 app.use('/', router);
-
 
 
 // Set up the server

@@ -2,7 +2,12 @@
 //and the logic of each route.
 var express = require('express');
 var router = express.Router();
+
+// Requiring mongoose to access database
 var mongoose = require("mongoose");
+// Requiring the Note and Article models
+var Note = require("../models/Note.js");
+var Article = require("../models/Article.js");
 
 // The scraping tools
 var request = require("request");
@@ -12,9 +17,7 @@ var cheerio = require("cheerio");
 var Promise = require("bluebird");
 mongoose.Promise = Promise;
 
-// Requiring the Note and Article models
-var Note = require("../models/Note.js");
-var Article = require("../models/Article.js");
+
 
 // Database configuration with mongoose
 mongoose.connect("mongodb://localhost/webscraping");
@@ -41,7 +44,7 @@ router.get('/', function (req, res) {
 });
 
 router.get('/index', function (req, res) {
-    res.render("index");
+    res.render("index",{});
   });
 
 // A GET request to scrape the website
@@ -83,7 +86,7 @@ router.get("/scrape", function(req, res) {
     });
   });
   // Tell the browser that we finished scraping the text
-  res.send("Scrape Complete");
+  //res.send("Scrape Complete");
 });
 
 // This will get the articles we scraped from the mongoDB

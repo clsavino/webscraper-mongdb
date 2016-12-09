@@ -2,8 +2,7 @@ body {
   background-color: snow;
 }
 
-.box {
-  background-image: url(../img/concrete_seamless.png);
+.articlesBox{
   min-height: 2000px;
   height: 100%;
   overflow: auto;
@@ -24,36 +23,16 @@ body {
   margin-top: 0px;
   margin-bottom: 10px;
   border: none;
-}
-
-.row3Text h3 {
-  color: #E9D985;
-}
-
-.redditResult {
-  background-color: #dddddd;
-  border-radius: 5px;
-  padding: 5px;
+  color: white;
 }
 
 .pageHeader h1{
   color: white;
-    margin-top: 12px;
-    margin-bottom: 5px;
-    font-family: 'Lobster';
-    font-size: 60px;
 }
 
 .pageHeader h2 {
   color: white;
 }
-
-
-.options {
-  font-size: 16px;
-  padding: 5px;
-}
-
 
 .row3Text {
   color: #2A9D8F;
@@ -61,4 +40,42 @@ body {
 }
 
 
+#articles p{
+  margin-bottom: 0;
+  margin-top: 20px;
+}
 
+#articles>a {
+  color: #2C82C9;
+}
+
+#notesDiv{
+
+}
+
+input {
+  height: 36px;
+  font-size: 14px;
+}
+
+textarea {
+  height: 200px;
+  font-size: 18px;
+}
+
+textarea, input {
+  display: block;
+  width: 100%;
+  background-color: snow;
+}
+
+#notes h4 {
+  color: #2A9D8F;
+  margin-top: 20px;
+}
+
+button {
+  margin-top: 10px;
+  padding: 10px;
+  background: white;
+}
