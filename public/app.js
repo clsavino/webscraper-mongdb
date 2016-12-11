@@ -66,7 +66,7 @@ $(document).on("click", "#savenote", function() {
     // With that done
     .done(function(data) {
       // Log the response
-      console.log(data);
+      //console.log(data);
       // Empty the notes section
       $("#notes").empty();
     });
