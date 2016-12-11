@@ -2,15 +2,6 @@ body {
   background-color: snow;
 }
 
-.articlesBox{
-  min-height: 2000px;
-  height: 100%;
-  overflow: auto;
-  border-radius: 5px;
-  margin-top: 20px;
-  margin-bottom: 50px;
-}
-
 #results  {
   display: inline-block;
   margin: 0 auto;
@@ -62,10 +53,6 @@ body {
   cursor: pointer;
 }
 
-#notesDiv{
-
-}
-
 input {
   height: 36px;
   font-size: 14px;
@@ -82,8 +69,8 @@ textarea, input {
   background-color: snow;
 }
 
-#notes h4 {
-  color: #2A9D8F;
+p.title {
+  color: #777777;
   margin-top: 20px;
 }
 

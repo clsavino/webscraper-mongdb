@@ -31,11 +31,13 @@ db.once("open", function() {
   console.log("Mongoose connection successful.");
 });
 
-/*Simple index route
+
+/*Simple index route if using index.html instead of handlebars
 router.get("/", function(req, res) {
   res.send(index.html);
 });
 */
+
 //root route redirect to /index
 router.get('/', function (req, res) {
   res.redirect('/index');
@@ -44,6 +46,7 @@ router.get('/', function (req, res) {
 router.get('/index', function (req, res) {
     res.render("index",{});
   });
+
 
 // A GET request to scrape the website
 router.get("/scrape", function(req, res) {
@@ -82,13 +85,15 @@ router.get("/scrape", function(req, res) {
             console.log(doc);
           }
         });
+        }
       }
-    }
 
     });
   });
   // Tell the browser that we finished scraping the text
-  res.send("Scrape Complete");
+  //res.send("Scrape Complete");
+  //res.send("");
+  res.send('');
 });
 
 // This will get the articles we scraped from the mongoDB
