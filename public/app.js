@@ -75,3 +75,12 @@ $(document).on("click", "#savenote", function() {
   //$("#titleinput").val("");
   $("#bodyinput").val("");
 });
+
+$(document).on("click", ".delete", function() {
+  $(this).parent().remove();
+
+  $.ajax({
+    method: "DELETE",
+    url: "/delete/" + $(this).siblings(".comment-text").attr("id")
+  })
+});
