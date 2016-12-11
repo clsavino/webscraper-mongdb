@@ -2,15 +2,6 @@ body {
   background-color: snow;
 }
 
-.articlesBox{
-  min-height: 2000px;
-  height: 100%;
-  overflow: auto;
-  border-radius: 5px;
-  margin-top: 20px;
-  margin-bottom: 50px;
-}
-
 #results  {
   display: inline-block;
   margin: 0 auto;
@@ -34,23 +25,32 @@ body {
   color: white;
 }
 
-.row3Text {
+.rowText {
   color: #2A9D8F;
   font-size: 2em;
 }
 
+.smallText {
+  color: #2A9D8F;
+  margin: 0 auto;
+  width: 50%;
+}
 
 #articles p{
   margin-bottom: 0;
   margin-top: 20px;
 }
 
+#articles p:hover {
+  cursor: default;
+}
+
 #articles>a {
   color: #2C82C9;
 }
 
-#notesDiv{
-
+#articles>a:hover {
+  cursor: pointer;
 }
 
 input {
@@ -69,8 +69,8 @@ textarea, input {
   background-color: snow;
 }
 
-#notes h4 {
-  color: #2A9D8F;
+p.title {
+  color: #777777;
   margin-top: 20px;
 }
 

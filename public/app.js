@@ -1,14 +1,17 @@
-// Grab the articles as a json
-$.getJSON("/articles", function(data) {
-  // For each one
-  for (var i = 0; i < data.length; i++) {
-    // Display the apropos information on the page
-    //$("#articles").append("<p data-id='" + data[i]._id + "'>" + data[i].title + "<br />" + data[i].link + "</p>");
-    //$("#articles").append("<p data-id='" + data[i]._id + "'>" + data[i].title + "</p>");
-    $("#articles").append("<p data-id='" + data[i]._id + "'>" + data[i].title + "</p>");
-    $("#articles").append("<a data-id='" + data[i]._id + "' href='"   + data[i].link + " target='about_blank'>" + data[i].link + "</a>");
-  }
-});
+
+
+  $.getJSON("/articles", function(data) {
+    // For each one
+    for (var i = 0; i < data.length; i++) {
+      // Display the information on the page
+      //$("#articles").append("<p data-id='" + data[i]._id + "'>" + data[i].title + "<br />" + data[i].link + "</p>");
+      //$("#articles").append("<p data-id='" + data[i]._id + "'>" + data[i].title + "</p>");
+      $("#articles").append("<p data-id='" + data[i]._id + "'>" + data[i].title + "</p>");
+      $("#articles").append("<a data-id='" + data[i]._id + "' href='"   + data[i].link + "' target='about_blank'>" + data[i].link + "</a>");
+      console.log('\n\nappending articles to page');
+    }
+  });
+
 
 // Whenever someone clicks a p tag
 $(document).on("click", "p", function() {
@@ -26,7 +29,7 @@ $(document).on("click", "p", function() {
     .done(function(data) {
       console.log(data);
       // The title of the article
-      $("#notes").append("<h4>" + data.title + "</h4>");
+      $("#notes").append("<p class='title'>" + data.title + "</p>");
       // An input to enter a new title
       //$("#notes").append("<input id='titleinput'  name='title' >");
       // A textarea to add a new note body
