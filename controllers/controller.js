@@ -19,12 +19,13 @@ mongoose.Promise = Promise;
 
 //Database configuration with mongoose
 var dbURI = 'mongodb://localhost/webscraping';
+
 if (process.env.NODE_ENV === 'production') {
     dbURI= "mongodb://heroku_w677159l:cn2kbl6l1cogrv4vf13g13iug8@ds133158.mlab.com:33158/heroku_w677159l";
 }
 
 // Database configuration with mongoose
-mongoose.connect("dbURI");
+mongoose.connect(dbURI);
 var db = mongoose.connection;
 
 // Show any mongoose errors
@@ -37,23 +38,14 @@ db.once("open", function() {
   console.log("Mongoose connection successful.");
 });
 
-
-/*Simple index route if using index.html instead of handlebars
-router.get("/", function(req, res) {
-  res.send(index.html);
-});
-*/
-
 //root route redirect to /index
 router.get('/', function (req, res) {
       res.redirect('/index');
 });
 
-
 router.get('/index', function (req, res) {
     res.render("index",{});
   });
-
 
 // A GET request to scrape the website
 router.get("/scrape", function(req, res) {
@@ -100,7 +92,7 @@ router.get("/scrape", function(req, res) {
   });
   // Tell the browser that we finished scraping the text
   //res.send("Scrape Complete");
-  //res.send("");
+  res.send("");
 });
 
 // This will get the articles we scraped from the mongoDB
