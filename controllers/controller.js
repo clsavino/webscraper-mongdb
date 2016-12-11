@@ -46,50 +46,9 @@ router.get("/", function(req, res) {
 
 //root route redirect to /index
 router.get('/', function (req, res) {
-
-  // First, we grab the body of the html with request
-  request("https://www.reddit.com/r/webdev/", function(error, response, html) {
-    // Then, we load that into cheerio and save it to $ for a shorthand selector
-    var $ = cheerio.load(html);
-    // Now, we grab every h2 within an article tag, and do the following:
-    $("p.title").each(function(i, element) {
-
-      // Save an empty result object
-      var result = {};
-
-      // Add the text and href of every link, and save them as properties of the result object -
-
-      //var result.title = $(element).children().text(); OR
-      result.title = $(this).children("a").text();
-      // var result.link = $(element).children().attr("href"); OR
-      result.link = $(this).children("a").attr("href");
-
-      // save link if it is an article and not a comment
-      if (result.link.slice(0,4) == "http") {
-        if (result.title && result.link) {
-        // Using our Article model, create a new entry
-        // This effectively passes the result object to the entry (and the title and link)
-        var entry = new Article(result);
-
-        // Now, save that entry to the db
-        entry.save(function(err, doc) {
-          // Log any errors
-          if (err) {
-            console.log(err);
-          }
-          // Or log the doc
-          else {
-            console.log(doc);
-          }
-        });
-        }
-      }
-
-    });
-
+      res.redirect('/index');
 });
-  res.redirect('/index');
-});
+
 
 router.get('/index', function (req, res) {
     res.render("index",{});
