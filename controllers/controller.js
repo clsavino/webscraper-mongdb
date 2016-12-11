@@ -18,7 +18,7 @@ var Promise = require("bluebird");
 mongoose.Promise = Promise;
 
 // Database configuration with mongoose
-mongoose.connect("mongodb://localhost/webscraping");
+mongoose.connect("MONGODB_URI: mongodb://heroku_w677159l:cn2kbl6l1cogrv4vf13g13iug8@ds133158.mlab.com:33158/heroku_w677159l");
 var db = mongoose.connection;
 
 // Show any mongoose errors
