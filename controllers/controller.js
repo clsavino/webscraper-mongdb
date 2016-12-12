@@ -2,12 +2,7 @@
 //and the logic of each route.
 var express = require('express');
 var router = express.Router();
-
-// Requiring mongoose to access database
 var mongoose = require("mongoose");
-// Requiring the Note and Article models
-var Note = require("../models/Note.js");
-var Article = require("../models/Article.js");
 
 // The scraping tools
 var request = require("request");
@@ -16,6 +11,10 @@ var cheerio = require("cheerio");
 // Mongoose mpromise deprecated - use bluebird promises
 var Promise = require("bluebird");
 mongoose.Promise = Promise;
+
+// Requiring the Note and Article models
+var Note = require("../models/Note.js");
+var Article = require("../models/Article.js");
 
 //Database configuration with mongoose
 var dbURI = 'mongodb://localhost/webscraping';
@@ -38,15 +37,22 @@ db.once("open", function() {
   console.log("Mongoose connection successful.");
 });
 
-// Root route, a GET request to scrape the website
-router.get('/', function(req, res) {
+
+//root route redirect to /index
+router.get('/', function (req, res) {
+  res.redirect('/index');
+});
+
+router.get('/index', function (req, res) {
+    res.render("index");
+  });
+
+// A GET request to scrape the website
+router.get("/scrape", function(req, res) {
   // First, we grab the body of the html with request
   request("https://www.reddit.com/r/webdev/", function(error, response, html) {
-    // drop collection and scrape for latest news
-
     // Then, we load that into cheerio and save it to $ for a shorthand selector
     var $ = cheerio.load(html);
-    // Now, we grab every h2 within an article tag, and do the following:
     $("p.title").each(function(i, element) {
 
       // Save an empty result object
@@ -89,13 +95,8 @@ router.get('/', function(req, res) {
 
   });
   // Tell the browser that we finished scraping the text
-  //res.send("Scrape Complete");
-  res.redirect('/index');
+  res.json({});
 });
-
-router.get('/index', function (req, res) {
-    res.render("index",{});
-  });
 
 // This will get the articles we scraped from the mongoDB
 router.get("/articles", function(req, res) {
