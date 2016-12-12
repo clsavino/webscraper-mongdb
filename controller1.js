@@ -38,8 +38,17 @@ db.once("open", function() {
   console.log("Mongoose connection successful.");
 });
 
-// Root route, a GET request to scrape the website
-router.get('/', function(req, res) {
+//root route redirect to /index
+router.get('/', function (req, res) {
+      res.redirect('/index');
+});
+
+router.get('/index', function (req, res) {
+    res.render("index",{});
+  });
+
+// A GET request to scrape the website
+router.get("/scrape", function(req, res) {
   // First, we grab the body of the html with request
   request("https://www.reddit.com/r/webdev/", function(error, response, html) {
     // drop collection and scrape for latest news
@@ -52,50 +61,41 @@ router.get('/', function(req, res) {
       // Save an empty result object
       var result = {};
 
-      // Add the text and href of every link, and save them as properties of the result object - var result.title = $(element).children().text(); OR
+      // Add the text and href of every link, and save them as properties of the result object -
+
+      //var result.title = $(element).children().text(); OR
       result.title = $(this).children("a").text();
       // var result.link = $(element).children().attr("href"); OR
       result.link = $(this).children("a").attr("href");
 
-      // save article title and link if it is an article and not a comment
+      // save link if it is an article and not a comment
       if (result.link.slice(0,4) == "http") {
         if (result.title && result.link) {
-            //If a document exists with this title, don't add it to the db
-            Article.find({ title: result.title }, function(err, exists) {
-                if (exists.length) {
-                    console.log('Article already exists');
-                }
-                else {
+        // Using our Article model, create a new entry
+        // This effectively passes the result object to the entry (and the title and link)
+        var entry = new Article(result);
 
-                    // Using our Article model, create a new entry, passing the result object to the entry (the title and link)
-                    var entry = new Article(result);
-
-                    // Now, save that entry to the db
-                    entry.save(function(err, doc) {
-                      // Log any errors
-                      if (err) {
-                        console.log(err);
-                      }
-                      // Or log the doc
-                      else {
-                        console.log(doc);
-                      }
-                    });
-                }
-            });
+        // Now, save that entry to the db
+        entry.save(function(err, doc) {
+          // Log any errors
+          if (err) {
+            console.log(err);
+          }
+          // Or log the doc
+          else {
+            console.log(doc);
+          }
+        });
         }
       }
+
     });
 
   });
   // Tell the browser that we finished scraping the text
   //res.send("Scrape Complete");
-  res.redirect('/index');
+  res.send('');
 });
-
-router.get('/index', function (req, res) {
-    res.render("index",{});
-  });
 
 // This will get the articles we scraped from the mongoDB
 router.get("/articles", function(req, res) {
