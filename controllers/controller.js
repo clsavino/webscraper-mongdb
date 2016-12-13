@@ -37,7 +37,6 @@ db.once("open", function() {
   console.log("Mongoose connection successful.");
 });
 
-
 //root route redirect to /index
 router.get('/', function (req, res) {
   res.redirect('/index');
@@ -62,7 +61,6 @@ router.get("/scrape", function(req, res) {
       result.title = $(this).children("a").text();
       // var result.link = $(element).children().attr("href"); OR
       result.link = $(this).children("a").attr("href");
-
       // save article title and link if it is an article and not a comment
       if (result.link.slice(0,4) == "http") {
         if (result.title && result.link) {
@@ -159,6 +157,17 @@ router.post("/articles/:id", function(req, res) {
           res.send(doc);
         }
       });
+    }
+  });
+});
+
+router.post("/delete/:id", function (req, res) {
+
+  Article.findOneAndRemove({"note": req.params.id}, function(err, data) {
+    if (err){
+      throw err;
+    } else {
+      console.log("Deleted Note with id:",req.params.id);
     }
   });
 });
