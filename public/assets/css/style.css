@@ -79,3 +79,11 @@ button {
   padding: 10px;
   background: white;
 }
+#savenote {
+  margin: 10px;
+  width: 100px;
+}
+
+#deletenote {
+  margin: 10px;
+}
