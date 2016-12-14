@@ -161,15 +161,20 @@ router.post("/articles/:id", function(req, res) {
   });
 });
 
-router.post("/delete/:id", function (req, res) {
+router.delete("/delete/:id", function (req, res) {
 
-  Article.findOneAndRemove({"note": req.params.id}, function(err, data) {
-    if (err){
-      throw err;
-    } else {
-      console.log("Deleted Note with id:",req.params.id);
-    }
+  Article.findById(req.params.id, function(err, article) {
+      Note.findByIdAndRemove(article.note, function(err,note){
+        Article.findOneAndUpdate({ "_id": req.params.id }, { "note": "" })
+          .exec(function(err,doc) {
+          console.log('\n\ndelete route - article' + article + "\n");
+          console.log('\n');
+          res.send(article);
+          });
+      });
   });
+
 });
+
 
 module.exports = router;

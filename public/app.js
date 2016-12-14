@@ -86,16 +86,16 @@ $(document).on("click", "#savenote", function() {
 $(document).on("click", "#deletenote", function() {
   // Grab the id associated with the article from the submit button
   var thisId = $(this).attr("data-id");
-  console.log('delete id', thisId);
+  //console.log('delete id', thisId);
 
   $.ajax({
-    method: "POST",
+    method: "DELETE",
     url: "/delete/" + thisId,
   })
     // With that done
     .done(function(data) {
       // Log the response
-      console.log(data);
+      console.log('app.js delete - data',data);
       // Empty the notes section
       $("#notes").empty();
     });
