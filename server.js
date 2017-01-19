@@ -38,7 +38,7 @@ app.use('/', router);
 
 
 // Set up the server
-var port = process.env.PORT || 3000;
+var port = process.env.PORT || 4000;
 app.listen(port, function() {
   console.log("App Server is listening on port " + port);
 });
